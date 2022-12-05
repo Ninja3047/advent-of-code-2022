@@ -18,7 +18,7 @@ fn solve(input: &str) -> usize {
         .sum()
 }
 
-pub fn main() {
+fn main() {
     let total = solve(include_str!("input.txt"));
     println!("{total}");
 }

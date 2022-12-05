@@ -7,17 +7,21 @@ fn solve(input: &str) -> usize {
             let (left, right) = s.split_at(s.len() / 2);
             let left_set: HashSet<char> = HashSet::from_iter(left.chars());
             let right_set: HashSet<char> = HashSet::from_iter(right.chars());
-            (&right_set & &left_set).into_iter().map(|c| {
-                if c.is_ascii_uppercase() {
-                    c as usize - 'A' as usize + 1 + 26
-                } else {
-                    c as usize - 'a' as usize + 1
-                }
-            }).sum::<usize>()
-        }).sum()
+            (&right_set & &left_set)
+                .into_iter()
+                .map(|c| {
+                    if c.is_ascii_uppercase() {
+                        c as usize - 'A' as usize + 1 + 26
+                    } else {
+                        c as usize - 'a' as usize + 1
+                    }
+                })
+                .sum::<usize>()
+        })
+        .sum()
 }
 
-pub fn main() {
+fn main() {
     let total = solve(include_str!("input.txt"));
     println!("{total}");
 }

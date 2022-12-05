@@ -39,16 +39,17 @@ fn solve(input: &str) -> usize {
             };
 
             let my_choice = match right {
-                "X" => RPS::Rock, 
+                "X" => RPS::Rock,
                 "Y" => RPS::Paper,
                 "Z" => RPS::Scissors,
                 _ => unreachable!("Error in input"),
             };
             my_choice as usize + get_outcome(my_choice, opponent_choice) as usize
-        }).sum()
+        })
+        .sum()
 }
 
-pub fn main() {
+fn main() {
     let total = solve(include_str!("input.txt"));
     println!("{total}");
 }

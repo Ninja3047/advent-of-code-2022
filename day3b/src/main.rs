@@ -6,19 +6,24 @@ fn solve(input: &str) -> usize {
         .lines()
         .array_chunks::<3>()
         .map(|g| {
-            g.map(|s| {
-                s.chars().collect::<HashSet<char>>()
-            }).into_iter().reduce(|s, acc| &s & &acc).unwrap().into_iter().map(|c| {
-                if c.is_ascii_uppercase() {
-                    c as usize - 'A' as usize + 1 + 26
-                } else {
-                    c as usize - 'a' as usize + 1
-                }
-            }).sum::<usize>()
-        }).sum()
+            g.map(|s| s.chars().collect::<HashSet<char>>())
+                .into_iter()
+                .reduce(|s, acc| &s & &acc)
+                .unwrap()
+                .into_iter()
+                .map(|c| {
+                    if c.is_ascii_uppercase() {
+                        c as usize - 'A' as usize + 1 + 26
+                    } else {
+                        c as usize - 'a' as usize + 1
+                    }
+                })
+                .sum::<usize>()
+        })
+        .sum()
 }
 
-pub fn main() {
+fn main() {
     let total = solve(include_str!("input.txt"));
     println!("{total}");
 }

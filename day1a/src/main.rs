@@ -11,7 +11,7 @@ fn solve(input: &str) -> usize {
         .unwrap_or(0)
 }
 
-pub fn main() {
+fn main() {
     let total = solve(include_str!("input.txt"));
     println!("{total}");
 }
